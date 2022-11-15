@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  :root {
+    --modal-duration: 1s;
+    --modal-color: #428bca;
+
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-image: url("img/tet.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 17px;
+    line-height: 1.6;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button {
+    background: #000000;
+    padding: 1em 2em;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background: #3876ac;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+
+
+  }
+
+  .modal-content {
+    margin: 10% auto;
+    width: 60%;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+  }
+
+  .modal-header h2,
+  .modal-footer h3 {
+    margin: 0;
+  }
+
+  .modal-header {
+    background: #999999;
+    padding: 15px;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .modal-body {
+    padding: 10px 20px;
+    background: rgb(255, 255, 255);
+  }
+
+  .modal-footer {
+    background: #fbfbfb;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  @keyframes modalopen {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .neon-btn {
+    position: relative;
+    padding: 15px 40px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #000000;
+    border-radius: 2px;
+    border: 3px solid #000;
+    box-shadow: 0 0 150px 2px #4285f2;
+    outline: none;
+    transition: all .55s linear;
+  }
+
+  .neon-btn:hover {
+    color: #000;
+    background-color: #af9455;
+  }
+
+
+
+
+</style>
+
+
+<body>
+
+
+  <button id="modal-btn" class="neon-btn">Tet message</button>
+
+  <div id="my-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>
+          Your message is</h2>
+      </div>
+      <div class="modal-body">
+        {{#if tets}}
+        <p>{{tets}}</p>
+        {{/if}}
+      </div>
+      <div class="modal-footer">
+        <h3></h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.querySelector('#my-modal');
+    const modalBtn = document.querySelector('#modal-btn');
+    const closeBtn = document.querySelector('.close');
+
+    // Events
+    modalBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', outsideClick);
+
+    // Open
+    function openModal() {
+      modal.style.display = 'block';
+    }
+
+    // Close
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    // Close If Outside Click
+    function outsideClick(e) {
+      if (e.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+  </script>
+</body>
+
+</html>

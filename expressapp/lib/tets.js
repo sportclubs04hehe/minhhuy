@@ -1,7 +1,5 @@
 const tetCookies = [
-    "Ngã ở đâu gấp đôi ở đó",
-    "tài hay xỉu",
-    "còn thở còn gỡ",
+    "Hello TeT",
    ]
    exports.gettetFortune= () => {
     const idx =

@@ -1,7 +1,5 @@
 const christmasCookies = [
-    "400 triệu",
-    "Jack",
-    "Villa",
+    "Hello Christmas",
    ]
    exports.getchristmasFortune= () => {
     const idx =
